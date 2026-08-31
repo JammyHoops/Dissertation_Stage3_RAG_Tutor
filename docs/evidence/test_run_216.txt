@@ -1,0 +1,252 @@
+Stage 3 RAG Tutor — full test suite run
+Captured 2026-08-29, Windows 10, Python (project .venv).
+Command: python -m unittest discover tests -v
+Offline suite: no network/LLM calls except NullLLM/mocked-LLM paths and
+one real spaCy model load (redaction NER tests).
+
+----------------------------------------------------------------------
+
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1251.75it/s]
+test_both_tiers_present_with_expected_level (test_ada_computer_science_connector.TestConceptToDocuments) ... ok
+test_common_metadata_fields (test_ada_computer_science_connector.TestConceptToDocuments) ... ok
+test_concept_id_consistent_across_tiers (test_ada_computer_science_connector.TestConceptToDocuments) ... ok
+test_prerequisites_is_none (test_ada_computer_science_connector.TestConceptToDocuments) ... ok
+test_dual_tagged_section_resolves_to_core (test_ada_computer_science_connector.TestExtractTieredSections) ... ok
+test_intro_included_with_concept_level_tier (test_ada_computer_science_connector.TestExtractTieredSections) ... ok
+test_scotland_only_section_dropped (test_ada_computer_science_connector.TestExtractTieredSections) ... ok
+test_yields_both_core_and_foundation_sections (test_ada_computer_science_connector.TestExtractTieredSections) ... ok
+test_a_level_maps_to_core (test_ada_computer_science_connector.TestSectionDifficultyTier) ... ok
+test_a_level_takes_priority_over_gcse (test_ada_computer_science_connector.TestSectionDifficultyTier) ... ok
+test_gcse_only_maps_to_foundation (test_ada_computer_science_connector.TestSectionDifficultyTier) ... ok
+test_neither_stage_returns_none (test_ada_computer_science_connector.TestSectionDifficultyTier) ... ok
+test_maps_known_tag (test_ada_computer_science_connector.TestTopicMapping) ... ok
+test_unmapped_tag_returns_none (test_ada_computer_science_connector.TestTopicMapping) ... ok
+test_ada_computer_science_licence_is_cc_by_nc_sa (test_attribution.TestBuildAttributions) ... ok
+test_different_concepts_produce_separate_citations (test_attribution.TestBuildAttributions) ... ok
+test_empty_input_yields_empty_output (test_attribution.TestBuildAttributions) ... ok
+test_isaac_science_licence_is_cc_by (test_attribution.TestBuildAttributions) ... ok
+test_missing_source_silently_skipped (test_attribution.TestBuildAttributions) ... ok
+test_missing_source_url_skipped (test_attribution.TestBuildAttributions) ... ok
+test_multiple_chunks_same_concept_deduped_to_one_citation (test_attribution.TestBuildAttributions) ... ok
+test_plain_concept_title_recovered (test_attribution.TestBuildAttributions) ... ok
+test_result_sorted_by_title (test_attribution.TestBuildAttributions) ... ok
+test_source_attribution_covers_both_real_connectors (test_attribution.TestBuildAttributions) ... ok
+test_subsection_title_split_to_plain_concept_title (test_attribution.TestBuildAttributions) ... ok
+test_unknown_source_silently_skipped (test_attribution.TestBuildAttributions) ... ok
+test_normal_turn_does_not_crash_and_returns_answer (test_chat_session.RunChatTurnNormalTurnTestCase) ... ok
+test_all_four_bands_map_to_expected_priors (test_context_builder.TestAttainmentBandToPrior) ... ok
+test_independent_of_flag_status (test_context_builder.TestAttainmentBandToPrior) ... ok
+test_none_profile_returns_none (test_context_builder.TestAttainmentBandToPrior) ... ok
+test_unrecognised_band_returns_none (test_context_builder.TestAttainmentBandToPrior) ... ok
+test_flag_status_none_returns_empty (test_context_builder.TestProfileToNote) ... ok
+test_none_profile_returns_empty (test_context_builder.TestProfileToNote) ... ok
+test_provisional_and_confirmed_produce_distinct_notes (test_context_builder.TestProfileToNote) ... ok
+test_unrecognised_flag_status_fails_closed_to_empty (test_context_builder.TestProfileToNote) ... ok
+test_bucket_boundaries_are_inclusive_of_lower_bound (test_context_builder.TestSummariseState) ... ok
+test_empty_rows_returns_empty_string (test_context_builder.TestSummariseState) ... ok
+test_high_estimate_bucketed_secure (test_context_builder.TestSummariseState) ... ok
+test_low_estimate_bucketed_still_building (test_context_builder.TestSummariseState) ... ok
+test_mid_estimate_bucketed_developing (test_context_builder.TestSummariseState) ... ok
+test_multiple_topics_joined (test_context_builder.TestSummariseState) ... ok
+test_n_obs_included_in_output (test_context_builder.TestSummariseState) ... ok
+test_add_and_list_messages_ordering_and_chunk_doc_ids (test_conversations_store.TestConversationsStore) ... ok
+test_add_and_list_messages_round_trips_attributions (test_conversations_store.TestConversationsStore) ... ok
+test_add_message_rejects_invalid_role (test_conversations_store.TestConversationsStore) ... ok
+test_add_message_without_attributions_stores_none (test_conversations_store.TestConversationsStore) ... ok
+test_create_and_get_conversation (test_conversations_store.TestConversationsStore) ... ok
+test_duplicate_create_conversation_rejected_by_unique_constraint (test_conversations_store.TestConversationsStore) ... ok
+test_get_or_create_conversation_creates_when_absent (test_conversations_store.TestConversationsStore) ... ok
+test_get_or_create_conversation_returns_same_id_on_repeat_calls (test_conversations_store.TestConversationsStore) ... ok
+test_get_or_create_conversation_scoped_per_topic (test_conversations_store.TestConversationsStore) ... ok
+test_list_conversations_filters_by_subject_and_student (test_conversations_store.TestConversationsStore) ... ok
+test_list_student_ids_distinct_and_sorted (test_conversations_store.TestConversationsStore) ... ok
+test_list_student_ids_empty_db (test_conversations_store.TestConversationsStore) ... ok
+test_recent_messages_bounded_and_chronological (test_conversations_store.TestConversationsStore) ... ok
+test_reset_diagnostic_reverts_to_pending_and_zero (test_conversations_store.TestConversationsStore) ... ok
+test_set_diagnostic_progress_rejects_invalid_status (test_conversations_store.TestConversationsStore) ... ok
+test_set_diagnostic_progress_updates_fields (test_conversations_store.TestConversationsStore) ... ok
+test_touch_conversation_updates_timestamp (test_conversations_store.TestConversationsStore) ... ok
+test_unknown_conversation_returns_none (test_conversations_store.TestConversationsStore) ... ok
+test_final_asks_for_wrapup_not_another_question (test_diagnostic.TestBuildGradingPrompt) ... ok
+test_non_final_asks_for_next_question (test_diagnostic.TestBuildGradingPrompt) ... ok
+test_prior_questions_listed_to_avoid_repeats (test_diagnostic.TestBuildGradingPrompt) ... ok
+test_score_marker_format_instruction_present (test_diagnostic.TestBuildGradingPrompt) ... ok
+test_student_answer_embedded_verbatim (test_diagnostic.TestBuildGradingPrompt) ... ok
+test_attributions_populated_from_chunks (test_diagnostic.TestBuildOpeningPrompt) ... ok
+test_chunk_doc_ids_collected (test_diagnostic.TestBuildOpeningPrompt) ... ok
+test_empty_profile_note_omits_teaching_note_line (test_diagnostic.TestBuildOpeningPrompt) ... ok
+test_forbidden_key_in_profile_note_raises (test_diagnostic.TestBuildOpeningPrompt) ... ok
+test_no_chunks_still_produces_a_prompt (test_diagnostic.TestBuildOpeningPrompt) ... ok
+test_no_profile_note_omits_teaching_note_line (test_diagnostic.TestBuildOpeningPrompt) ... ok
+test_non_allowed_field_in_profile_note_raises (test_diagnostic.TestBuildOpeningPrompt) ... ok
+test_profile_note_with_scaffolding_note_renders_teaching_note_line (test_diagnostic.TestBuildOpeningPrompt) ... ok
+test_system_prompt_is_diagnostic_specific (test_diagnostic.TestBuildOpeningPrompt) ... ok
+test_user_prompt_includes_topic_and_context (test_diagnostic.TestBuildOpeningPrompt) ... ok
+test_all_three_valid_scores_parse (test_diagnostic.TestParseGradedResponse) ... ok
+test_malformed_marker_returns_none_score (test_diagnostic.TestParseGradedResponse) ... [diagnostic] No MASTERY_SCORE marker found in LLM response — skipping mastery observation for this turn. Raw (truncated): 'Some reply.\n[[MASTERY_SCORE: excellent]]'
+ok
+test_marker_must_be_at_end_not_mid_text (test_diagnostic.TestParseGradedResponse) ... [diagnostic] No MASTERY_SCORE marker found in LLM response — skipping mastery observation for this turn. Raw (truncated): '[[MASTERY_SCORE: 1.0]] this text comes after the marker'
+ok
+test_marker_stripped_from_visible_text (test_diagnostic.TestParseGradedResponse) ... ok
+test_missing_marker_returns_none_score_not_a_guess (test_diagnostic.TestParseGradedResponse) ... [diagnostic] No MASTERY_SCORE marker found in LLM response — skipping mastery observation for this turn. Raw (truncated): 'The tutor forgot to include a marker.'
+ok
+test_well_formed_marker_parsed (test_diagnostic.TestParseGradedResponse) ... ok
+test_question_count_is_small_and_positive (test_diagnostic.TestQuestionCount) ... ok
+test_at_least_one_scenario_loads (test_evaluation_scenarios.TestScenarioSet) ... ok
+test_every_scenario_has_required_text_fields (test_evaluation_scenarios.TestScenarioSet) ... ok
+test_every_subject_topic_pair_is_real (test_evaluation_scenarios.TestScenarioSet) ... ok
+test_ids_are_unique (test_evaluation_scenarios.TestScenarioSet) ... ok
+test_mastery_rows_shape_matches_summarise_state_expectations (test_evaluation_scenarios.TestScenarioSet) ... ok
+test_grounding_chunks_flattened_into_one_cell (test_expert_review.TestExportReviewCsv) ... ok
+test_rating_and_comment_columns_start_blank (test_expert_review.TestExportReviewCsv) ... ok
+test_row_count_is_criteria_times_scenarios (test_expert_review.TestExportReviewCsv) ... ok
+test_transcript_content_present_in_rows (test_expert_review.TestExportReviewCsv) ... ok
+test_no_ratings_yet_reports_that_cleanly (test_expert_review.TestGenerateReport) ... ok
+test_report_contains_descriptive_stats_and_quoted_comments (test_expert_review.TestGenerateReport) ... ok
+test_report_never_uses_inferential_language (test_expert_review.TestGenerateReport) ... ok
+test_imported_ratings_land_in_results_jsonl (test_expert_review.TestImportReviewCsv) ... ok
+test_invalid_rating_in_a_filled_row_raises (test_expert_review.TestImportReviewCsv) ... ok
+test_only_filled_rows_are_imported (test_expert_review.TestImportReviewCsv) ... ok
+test_reviewer_role_is_fixed_not_a_name (test_expert_review.TestImportReviewCsv) ... ok
+test_rejects_out_of_range_rating (test_expert_review.TestRecordRating) ... ok
+test_rejects_unknown_criterion (test_expert_review.TestRecordRating) ... ok
+test_valid_rating_appends_a_line (test_expert_review.TestRecordRating) ... ok
+test_cohort_prior_used_when_present (test_explanation_method_store.TestColdStartPrior) ... ok
+test_seeded_row_persists_and_is_reused (test_explanation_method_store.TestColdStartPrior) ... ok
+test_unseen_student_method_seeded_at_uniform_default (test_explanation_method_store.TestColdStartPrior) ... ok
+test_freshly_logged_interaction_is_pending (test_explanation_method_store.TestLogAndGetPendingInteraction) ... ok
+test_graded_interaction_no_longer_pending (test_explanation_method_store.TestLogAndGetPendingInteraction) ... ok
+test_no_pending_for_unseen_conversation (test_explanation_method_store.TestLogAndGetPendingInteraction) ... ok
+test_pending_scoped_per_conversation (test_explanation_method_store.TestLogAndGetPendingInteraction) ... ok
+test_case_insensitive_yes_no (test_explanation_method_store.TestParseUnderstandingMarker) ... ok
+test_malformed_marker_returns_none (test_explanation_method_store.TestParseUnderstandingMarker) ... ok
+test_marker_must_be_at_end_not_mid_text (test_explanation_method_store.TestParseUnderstandingMarker) ... ok
+test_marker_stripped_from_visible_text (test_explanation_method_store.TestParseUnderstandingMarker) ... ok
+test_missing_marker_returns_none_not_a_guess (test_explanation_method_store.TestParseUnderstandingMarker) ... ok
+test_well_formed_no_marker_parsed (test_explanation_method_store.TestParseUnderstandingMarker) ... ok
+test_well_formed_yes_marker_parsed (test_explanation_method_store.TestParseUnderstandingMarker) ... ok
+test_aggregates_successes_and_failures_across_students (test_explanation_method_store.TestRecomputeCohortPriors) ... ok
+test_no_data_yields_no_cohort_rows (test_explanation_method_store.TestRecomputeCohortPriors) ... ok
+test_ungraded_interactions_not_counted (test_explanation_method_store.TestRecomputeCohortPriors) ... ok
+test_failure_increments_beta_only (test_explanation_method_store.TestRecordUnderstanding) ... ok
+test_marks_interaction_row_correct_immediate (test_explanation_method_store.TestRecordUnderstanding) ... ok
+test_repeated_updates_accumulate (test_explanation_method_store.TestRecordUnderstanding) ... ok
+test_success_increments_alpha_only (test_explanation_method_store.TestRecordUnderstanding) ... ok
+test_returns_a_known_method (test_explanation_method_store.TestSelectMethod) ... ok
+test_strongly_favourable_posterior_wins_most_draws_not_all (test_explanation_method_store.TestSelectMethod) ... ok
+test_biology_connector_unaffected_by_chemistry_tag_map (test_isaac_science_connector.TestChemistryConnector) ... ok
+test_chemistry_concept_produces_documents_with_expected_metadata (test_isaac_science_connector.TestChemistryConnector) ... ok
+test_defaults_to_chemistry_subject (test_isaac_science_connector.TestChemistryConnector) ... ok
+test_maps_broad_and_specific_chemistry_tags (test_isaac_science_connector.TestChemistryConnector) ... ok
+test_figure_becomes_bracketed_caption (test_isaac_science_connector.TestCollectTextFragments) ... ok
+test_recurses_into_children (test_isaac_science_connector.TestCollectTextFragments) ... ok
+test_a_level_concept_produces_documents_with_expected_metadata (test_isaac_science_connector.TestConceptToDocuments) ... ok
+test_gcse_only_concept_skipped_this_pass (test_isaac_science_connector.TestConceptToDocuments) ... ok
+test_figure_caption_present_in_accordion_section (test_isaac_science_connector.TestExtractSections) ... ok
+test_glossary_markup_stripped_in_intro (test_isaac_science_connector.TestExtractSections) ... ok
+test_intro_and_accordion_sections_both_present (test_isaac_science_connector.TestExtractSections) ... ok
+test_leaves_plain_text_unchanged (test_isaac_science_connector.TestGlossaryStripping) ... ok
+test_strips_glossary_inline_markup (test_isaac_science_connector.TestGlossaryStripping) ... ok
+test_maps_known_tag_to_topic (test_isaac_science_connector.TestTopicMapping) ... ok
+test_unmapped_tags_return_none (test_isaac_science_connector.TestTopicMapping) ... ok
+test_offline_generate_never_raises (test_llm_client.TestNullLLMNeverFails) ... ok
+test_empty_string_every_attempt_raises_not_returns (test_llm_client.TestRetryThenRaiseOnEmptyNoException) ... LLM call returned an empty response with no error (attempt 1)
+LLM call returned an empty response with no error (attempt 2)
+LLM call returned an empty response with no error (attempt 3)
+LLM call failed after retries: None
+ok
+test_empty_then_real_content_recovers (test_llm_client.TestRetryThenRaiseOnEmptyNoException) ... LLM call returned an empty response with no error (attempt 1)
+ok
+test_none_treated_the_same_as_empty_string (test_llm_client.TestRetryThenRaiseOnEmptyNoException) ... LLM call returned an empty response with no error (attempt 1)
+LLM call returned an empty response with no error (attempt 2)
+LLM call returned an empty response with no error (attempt 3)
+LLM call failed after retries: None
+ok
+test_all_attempts_raising_ends_in_generation_error (test_llm_client.TestRetryThenRaiseOnException) ... LLM call failed (attempt 1): ValueError('a')
+LLM call failed (attempt 2): ValueError('b')
+LLM call failed (attempt 3): ValueError('c')
+LLM call failed after retries: ValueError('c')
+ok
+test_generation_error_chains_the_last_real_exception (test_llm_client.TestRetryThenRaiseOnException) ... LLM call failed (attempt 1): ValueError('a')
+LLM call failed (attempt 2): ValueError('b')
+LLM call failed (attempt 3): ValueError('the real cause')
+LLM call failed after retries: ValueError('the real cause')
+ok
+test_success_after_earlier_failures_returns_the_result (test_llm_client.TestRetryThenRaiseOnException) ... LLM call failed (attempt 1): ValueError('a')
+ok
+test_email_and_phone_redacted (test_redaction.TestRedactFullPipeline) ... ok
+test_non_register_name_caught_by_ner (test_redaction.TestRedactFullPipeline) ... ok
+test_overlapping_email_and_register_name_no_double_redaction (test_redaction.TestRedactFullPipeline) ... ok
+test_redact_end_to_end (test_redaction.TestRedactFullPipeline) ... ok
+test_register_name_redacted (test_redaction.TestRedactFullPipeline) ... ok
+test_stem_text_with_eponym_unchanged_thanks_to_allowlist (test_redaction.TestRedactFullPipeline) ... ok
+test_known_inputs_match_hand_computed_blend (test_retriever_search.TestAdjustedRankScore) ... ok
+test_missing_kb_score_defaults_to_zero_not_a_crash (test_retriever_search.TestAdjustedRankScore) ... ok
+test_non_numeric_score_falls_back_to_large_distance (test_retriever_search.TestAdjustedRankScore) ... ok
+test_all_three_combine_with_and_in_order (test_retriever_search.TestBuildMetadataFilter) ... ok
+test_no_args_returns_none (test_retriever_search.TestBuildMetadataFilter) ... ok
+test_single_difficulty_tier_returns_plain_dict (test_retriever_search.TestBuildMetadataFilter) ... ok
+test_single_subject_returns_plain_dict (test_retriever_search.TestBuildMetadataFilter) ... ok
+test_single_topic_returns_plain_dict (test_retriever_search.TestBuildMetadataFilter) ... ok
+test_subject_and_difficulty_tier_combine_with_and (test_retriever_search.TestBuildMetadataFilter) ... ok
+test_subject_and_topic_combine_with_and (test_retriever_search.TestBuildMetadataFilter) ... ok
+test_malformed_timestamp_fails_closed_to_no_penalty (test_retriever_search.TestDecayMultiplier) ... ok
+test_no_last_feedback_at_is_full_strength (test_retriever_search.TestDecayMultiplier) ... ok
+test_old_feedback_hits_the_floor (test_retriever_search.TestDecayMultiplier) ... ok
+test_recent_feedback_is_close_to_full_strength (test_retriever_search.TestDecayMultiplier) ... ok
+test_negative_only (test_retriever_search.TestFeedbackBonus) ... ok
+test_negatives_weigh_more_than_positives (test_retriever_search.TestFeedbackBonus) ... ok
+test_positive_only (test_retriever_search.TestFeedbackBonus) ... ok
+test_zero_counts_is_zero (test_retriever_search.TestFeedbackBonus) ... ok
+test_empty_doc_yields_nothing (test_smoke.TestChunkingPassthrough) ... ok
+test_single_chunk_with_stable_id (test_smoke.TestChunkingPassthrough) ... ok
+test_config_imports_and_instantiates (test_smoke.TestConfig) ... ok
+test_missing_api_key_raises_before_importing_sdk (test_smoke.TestGeminiClientFailsFast) ... ok
+test_offline_generate (test_smoke.TestNullLLM) ... ok
+test_allowed_note_passes_and_ids_collected (test_smoke.TestPromptGuard) ... ok
+test_attributions_populated_for_a_real_source_chunk (test_smoke.TestPromptGuard) ... ok
+test_forbidden_field_in_history_rejected (test_smoke.TestPromptGuard) ... ok
+test_forbidden_field_in_understanding_check_rejected (test_smoke.TestPromptGuard) ... ok
+test_forbidden_profile_field_rejected (test_smoke.TestPromptGuard) ... ok
+test_known_explanation_method_renders_into_prompt (test_smoke.TestPromptGuard) ... ok
+test_long_chunk_content_is_truncated (test_smoke.TestPromptGuard) ... ok
+test_no_explanation_method_omits_the_line (test_smoke.TestPromptGuard) ... ok
+test_no_pending_check_omits_marker_instruction (test_smoke.TestPromptGuard) ... ok
+test_pending_understanding_check_adds_marker_instruction (test_smoke.TestPromptGuard) ... ok
+test_short_chunk_content_is_not_truncated (test_smoke.TestPromptGuard) ... ok
+test_system_prompt_defers_to_explanation_approach (test_smoke.TestPromptGuard) ... ok
+test_system_prompt_never_signals_a_level_drop (test_smoke.TestPromptGuard) ... ok
+test_unexpected_understanding_check_field_rejected (test_smoke.TestPromptGuard) ... ok
+test_unknown_explanation_method_rejected (test_smoke.TestPromptGuard) ... ok
+test_valid_history_renders_into_prompt (test_smoke.TestPromptGuard) ... ok
+test_allowlist_suppresses_matching_span (test_smoke.TestRedactionRegexAndRegister) ... ok
+test_email_and_phone_regex (test_smoke.TestRedactionRegexAndRegister) ... ok
+test_register_does_not_match_stem_vocabulary (test_smoke.TestRedactionRegexAndRegister) ... ok
+test_register_match_full_and_first_name (test_smoke.TestRedactionRegexAndRegister) ... ok
+test_known_student_known_subject (test_stage1_loader.TestGetProfile) ... ok
+test_known_student_unknown_subject_returns_none (test_stage1_loader.TestGetProfile) ... ok
+test_unknown_student_returns_none (test_stage1_loader.TestGetProfile) ... ok
+test_missing_file_returns_empty_dict (test_stage1_loader.TestLoadProfiles) ... ok
+test_multi_row_per_student_nests_by_subject (test_stage1_loader.TestLoadProfiles) ... ok
+test_two_students_independent (test_stage1_loader.TestLoadProfiles) ... ok
+test_cold_start_estimate_equals_first_outcome (test_student_state_store.TestRecordObservation) ... ok
+test_ewma_blends_toward_new_outcome_not_replaces (test_student_state_store.TestRecordObservation) ... ok
+test_mastery_row_created_with_n_obs_one (test_student_state_store.TestRecordObservation) ... ok
+test_n_obs_increments_across_calls (test_student_state_store.TestRecordObservation) ... ok
+test_rejects_invalid_outcome (test_student_state_store.TestRecordObservation) ... ok
+test_repeated_correct_answers_converge_upward (test_student_state_store.TestRecordObservation) ... ok
+test_separate_topics_tracked_independently (test_student_state_store.TestRecordObservation) ... ok
+test_unseen_topic_returns_no_rows (test_student_state_store.TestRecordObservation) ... ok
+test_creates_row_with_n_obs_zero (test_student_state_store.TestSeedMasteryPrior) ... ok
+test_first_real_observation_blends_into_the_seed (test_student_state_store.TestSeedMasteryPrior) ... ok
+test_never_overwrites_an_existing_row (test_student_state_store.TestSeedMasteryPrior) ... ok
+test_get_topic_found_and_not_found (test_taxonomy.TestTaxonomy) ... ok
+test_list_subjects (test_taxonomy.TestTaxonomy) ... ok
+test_list_topics (test_taxonomy.TestTaxonomy) ... ok
+test_unknown_subject_returns_empty (test_taxonomy.TestTaxonomy) ... ok
+
+----------------------------------------------------------------------
+Ran 216 tests in 8.168s
+
+OK
